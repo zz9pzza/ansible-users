@@ -75,7 +75,7 @@
         uid: 2225
         groups: [users, bin]
         shell: /bin/sh
-        home: /home/otherdirectory
+        home: /home/otherdirectory1
         profile: |
           alias ll='ls -lah'
           alias cp='cp -iv'
