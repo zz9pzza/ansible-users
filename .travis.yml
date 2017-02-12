@@ -32,17 +32,16 @@ script:
   - id ansibletestuser5 | grep --silent "uid=2226(ansibletestuser5) gid=100(ansibletestgroup) groups=100(users),2(bin)"
   - grep --silent "^ansibletestgroup:"  /etc/group
   - grep --silent "^ansibletestgroup1:" /etc/group
-  - ls -lgd /home/ansibletestuser  | awk '{exit $3="ansibletestuser"}'
-  - ls -lgd /home/ansibletestuser2 | awk '{exit $3="ansibletestuser2"}'
-  - ls -lgd /home/ansibletestuser3 | awk '{exit $3="ansibletestgroup"}'
-  - ls -lgd /home/ansibletestuser4 | awk '{exit $3="users"}'
-  - ls -lgd /home/ansibletestuser5 | awk '{exit $3="ansibletestgroup"}'
-  - ls -lg /home/ansibletestuser/.profile  | awk '{exit $3=="ansibletestuser"}'
-  - ls -lg /home/otherdirectory/.profile   | awk '{exit $3=="ansibletestuser2"}'
-  - ls -lg /home/ansibletestuser3/.profile | awk '{exit $3=="ansibletestgroup"}'
-  - ls -lg /home/otherdirectory1/.profile  | awk '{exit $3=="users"}'
-  - ls -lg /home/otherdirectory2/.profile  | awk '{exit $3=="ansibletestgroup"}'
-
+  - ls -lgd /home/ansibletestuser  | awk '{exit $3!="ansibletestuser"}'
+  - ls -lgd /home/otherdirectory   | awk '{exit $3!="ansibletestuser2"}'
+  - ls -lgd /home/ansibletestuser3 | awk '{exit $3!="ansibletestgroup"}'
+  - ls -lgd /home/otherdirectory1  | awk '{exit $3!="users"}'
+  - ls -lgd /home/ansibletestuser5 | awk '{exit $3!="ansibletestgroup"}'
+  - ls -lg /home/ansibletestuser/.profile   | awk '{exit $3!="ansibletestuser"}'
+  - ls -lg /home/otherdirectory/.profile    | awk '{exit $3!="ansibletestuser2"}'
+  - ls -lg /home/ansibletestuser3/.profile  | awk '{exit $3!="ansibletestgroup"}'
+  - ls -lg /home/otherdirectory1/.profile   | awk '{exit $3!="users"}'
+  - ls -lgd /home/ansibletestuser5/.profile | awk '{exit $3!="ansibletestgroup"}'
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
