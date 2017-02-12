@@ -87,6 +87,7 @@
 - hosts: localhost
   remote_user: root
   vars:
+    users_create_per_user_group: false
     individual_users: true
     users:
       - name: Ansible Test User5
