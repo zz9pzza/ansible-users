@@ -14,7 +14,6 @@
 - name: User creation
   user:
     name: "{{item.username}}"
-    group: "{{item.username if users_create_per_user_group else users_group}}"
     group: "{{users_group if users_create_per_user_group else (item.group if individual_users else item.username)}}"     
     # empty string removes user from all secondary groups
     groups: "{{item.groups | join(',') if 'groups' in item else ''}}"
