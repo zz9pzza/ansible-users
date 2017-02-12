@@ -44,7 +44,7 @@
   remote_user: root
   vars:
     users_create_per_user_group: false
-    users_group: users
+    users_group: ansibletestgroup
     groups_to_create:
       - name: ansibletestgroup1
         gid: 4001
