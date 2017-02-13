@@ -34,7 +34,7 @@
   with_subelements:
     - "{{users}}"
     - ssh_key
-  when: users.ssh_key is defined
+  when: item.0.ssh_key is defined
   tags: ['users','configuration']
 
 - name: Setup user profiles
