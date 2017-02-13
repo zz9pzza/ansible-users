@@ -84,3 +84,19 @@
 
   roles:
     - ansible-users
+
+- hosts: localhost
+  remote_user: root
+  vars:
+    users:
+      - name: Ansible Test User6
+        username: ansibletestuser6
+        uid: 2227
+        groups: [users, bin]
+        shell: /bin/sh
+        profile: |
+          alias ll='ls -lah'
+          alias cp='cp -iv'
+
+  roles:
+    - ansible-users
