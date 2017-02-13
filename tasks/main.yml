@@ -33,8 +33,7 @@
     path: "{{ item.0.home | default('/home/' + item.0.username) }}/.ssh/authorized_keys"
   with_subelements:
     - "{{users}}"
-    - ssh_key
-  when: item.0.ssh_key is defined
+    - ssh_key|default([])
   tags: ['users','configuration']
 
 - name: Setup user profiles
